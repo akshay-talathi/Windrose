@@ -1,0 +1,25 @@
+*****Paths of JVM may differ due to version or in cases where it is a 32 bit OS*****************
+
+
+1. cd into the Wondrose directory
+
+2. Modify Code And Specify Path Of Data
+
+3. Compiling the Java Code 
+	javac -cp .:`find * -name "*.jar" | tr "\n" ":"` ParseData.java 
+
+4. Compiling the C++ program
+	a. Create Symlinks
+		ln -s /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/JavaVM.framework/Versions/A/Headers/jni.h jni.h
+	 
+		ln -s /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/JavaVM.framework/Versions/A/Headers/jni_md.h jni_md.h
+
+	b. Compile C++ Code
+		g++-5 -I /Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/include/ -I /Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/include/darwin/ -L /Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/jre/lib/server/  -Wno-write-strings -std=c++11 -fopenmp   Application-openmp.cpp -ljvm -o Application
+
+
+5. Set the export path
+	export LD_LIBRARY_PATH=/usr/lib/jvm/java-8-oracle/jre/lib/amd64/server/
+
+6. Run the program
+	./a.out

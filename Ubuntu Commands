@@ -1,0 +1,31 @@
+*****Paths of JVM may differ due to version or in cases where it is a 32 bit OS*****************
+
+1. cd into the Wondrose directory
+
+
+2. Modify Code And Specify Path Of Data
+
+3. Compiling the Java Code 
+	javac -cp .:`find * -name "*.jar" | tr "\n" ":"` ParseData.java 
+
+
+4. Compiling the C++ program
+ 	g++ -g -I /usr/lib/jvm/java-8-oracle/include/ -I /usr/lib/jvm/java-8-oracle/include/linux/  -L /usr/bin/java -L /usr/lib/jvm/java-8-oracle/jre/lib/amd64/server/ -std=gnu++0x -Wno-write-strings -fopenmp  Application-openmp.cpp -ljvm	
+
+5. Set the export path
+	export LD_LIBRARY_PATH=/usr/lib/jvm/java-8-oracle/jre/lib/amd64/server/
+
+6. Run the program
+	./a.out
+
+
+
+
+
+
+
+
+	
+
+
+
